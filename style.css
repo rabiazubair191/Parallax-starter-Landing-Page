@@ -12,8 +12,12 @@ body {
 .home-page {
     background-image: url(./assets/home-page-img.jpg);
     background-repeat: no-repeat;
+    background-size: cover;       /* Stretches the image to cover the whole section without white gaps */
+  background-position: center;
     width: 100%;
     height: 100vh;
+    padding-top: 100px; /* Pushes the hero content down so it sits nicely below the fixed header */
+  box-sizing: border-box;
 }
 
 .header {
@@ -25,6 +29,11 @@ body {
     gap: 30px;
     padding: 15px 30px;
     background-color: rgba(0, 0, 0, 0.6);
+   position: fixed;
+   top: 0;          /* Locks it to the absolute top of the viewport */
+  left: 0;         /* Locks it to the absolute left edge */
+  width: 100%;     /* Forces it to stretch fully across the screen width */
+  z-index: 1000;
 }
 
 .logo-name {
@@ -162,6 +171,8 @@ body {
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(./assets/what-we-do-page-img.jpg);
     width: 100%;
     height: 100vh;
+    background-size: cover;       /* Stretches the image to cover the whole section without white gaps */
+  background-position: center;
 }
 
 .what-we-do-page-heading {
@@ -258,6 +269,8 @@ body {
     background-image: url(./assets/our-work-page-img.jpg);
     width: 100%;
     height: 100vh;
+    background-size: cover;       /* Stretches the image to cover the whole section without white gaps */
+  background-position: center;
 }
 
 .our-work-heading {
@@ -342,6 +355,8 @@ body {
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(./assets/get-in-touch-page-img.jpg);
     width: 100%;
     height: 100vh;
+    background-size: cover;       /* Stretches the image to cover the whole section without white gaps */
+  background-position: center;
 }
 
 .get-in-touch-heading {
@@ -477,6 +492,26 @@ body {
         cursor: pointer;
     }
 
+    /* Position the nav menu as a vertical dropdown on mobile */
+  .header-link {
+    display: none;             /* Keeps it hidden initially */
+    position: absolute;
+    top: 100%;                 /* Opens right below the header bar */
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* Dark background for visibility */
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    gap: 15px;
+  }
+
+  /* Reveal the nav dropdown when hovering over the menu icon or header */
+  .menu-icon:hover + .header-link,
+  .header-link:hover {
+    display: flex;             /* Shows the links stacked vertically */
+  }
+
     .cards {
         flex-direction: column;
         align-items: center;
@@ -550,4 +585,58 @@ body {
         width: 100%;
         max-width: 400px;
     }
+
+    .icons {
+        display: flex;
+    flex-direction: column;    /* Stacks the cards vertically on top of each other */
+    align-items: center;       /* Centers them nicely on the screen */
+    gap: 30px;
+    }
+
+    .nums {
+         display: flex;
+    flex-direction: column;    /* Stacks the cards vertically on top of each other */
+    align-items: center;       /* Centers them nicely on the screen */
+    gap: 30px;
+    }
+
+    .what-we-do-page {
+        height: auto;           /* Allows the section to grow based on content */
+    min-height: 100vh;      /* Ensures it covers at least the full screen */
+    padding-bottom: 50px;
+    }
+}
+
+@media (max-width: 380px) {
+    .home-page-heading {
+        font-size: 1.5rem;
+        padding-top: 50px;
+    }
+
+    .what-we-do-page-heading {
+        font-size: 2rem;
+    }
+
+    .icons {
+        font-size: 0.5rem;
+        padding-top: 60px;
+    }
+
+    .our-work-heading {
+        font-size: 2rem;
+    }
+
+    .our-work-para {
+        font-size: 0.8rem;
+        text-align: center;
+    }
+
+    .get-in-touch-heading {
+        font-size: 2rem;
+    }
+
+    .get-in-touch-para {
+        font-size: 0.5rem;
+    }
+
 }
